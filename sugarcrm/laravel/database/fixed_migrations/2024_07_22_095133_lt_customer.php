@@ -17,8 +17,10 @@ class LtCustomer extends Migration
             $table->id();
             $table->string('first_name', 255);
             $table->string('last_name', 255);
+            $table->string('id_number', 15);
+            $table->string('phone', 15)->nullable();
             $table->string('description', 255);
-            $table->string('id_number', 255);
+            $table->string('id_number_status', 9)->nullable();
             $table->timestamps();
         });
     }

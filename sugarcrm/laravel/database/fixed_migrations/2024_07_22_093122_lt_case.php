@@ -19,7 +19,8 @@ class LtCase extends Migration
             $table->text('description')->nullable();
             $table->integer('case_id')->nullable();
             $table->integer('policy_id')->nullable();
-            $table->string('type', 255);
+            $table->string('type', 255)->nullable();
+            $table->string('status', 255)->default('open');
             $table->timestamps();
         });
     }
