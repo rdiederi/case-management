@@ -13,7 +13,15 @@ class LtCase extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('lt_case', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 255);
+            $table->text('description')->nullable();
+            $table->integer('case_id')->nullable();
+            $table->integer('policy_id')->nullable();
+            $table->string('type', 255);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class LtCase extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('lt_case');
     }
 }

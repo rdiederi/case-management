@@ -4,9 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLtPolicyTable extends Migration
+class LtCustomer extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,16 +13,15 @@ class CreateLtPolicyTable extends Migration
      */
     public function up()
     {
-        Schema::create('lt_policy', function (Blueprint $table) {
+        Schema::create('lt_customer', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id')->nullable();
-            $table->boolean('active', )->default(true);
-            $table->string('name', 255)->nullable();
-            $table->text('description')->nullable();
+            $table->string('first_name', 255);
+            $table->string('last_name', 255);
+            $table->string('description', 255);
+            $table->string('id_number', 255);
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -32,6 +30,6 @@ class CreateLtPolicyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lt_policy');
+        Schema::dropIfExists('lt_customer');
     }
 }
