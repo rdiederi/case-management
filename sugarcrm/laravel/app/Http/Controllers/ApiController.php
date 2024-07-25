@@ -348,7 +348,20 @@ SQL);
      */
     function getCustomersWithPolicyNames(Request $request) {
         $results = [];
-        //Add code here
+        $results = DB::select("
+            SELECT
+                c.last_name,
+                c.first_name,
+                c.id_number,
+                GROUP_CONCAT(p.name SEPARATOR ', ') AS policy_names
+            FROM
+                lt_customer AS c
+            LEFT JOIN
+                lt_policy AS p ON c.id = p.customer_id
+            GROUP BY
+                c.id, c.last_name, c.first_name, c.id_number
+        ");
+
         return response()->json($results);
     }
 
