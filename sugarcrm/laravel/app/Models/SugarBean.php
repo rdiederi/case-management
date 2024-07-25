@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Log;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 
 class SugarBean extends Model
 {
@@ -159,7 +162,7 @@ class SugarBean extends Model
         unset($data['id']);
         unset($data['created_at']);
         unset($data['updated_at']);
-        
+
         $className = get_class($this);
         if ( !empty($this->id) ) {
             return $className::where('id', $this->id)->update($data);

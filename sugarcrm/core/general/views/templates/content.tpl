@@ -4,7 +4,7 @@
         <div class="card">
             <h5 class="card-header">Increase Cover Cases</h5>
             <div class="card-body">
-                <h5 class="card-title">0{*$totalNumOfIncreaseCoverCases*}</h5>
+                <h5 class="card-title">{$totalNumOfIncreaseCoverCases}</h5>
             </div>
         </div>
     </div>
