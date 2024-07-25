@@ -12,23 +12,23 @@
 
 ### Build the container that will serve the test app
 ```sh
-docker compose build test-app
+docker-compose build test-app
 ```
 
 ### Start the test container up and build the db and ngix containers
 ```sh
-docker compose up -d
+docker-compose up -d
 ```
 
 ### Install composer packages
 ```sh
-docker compose exec test-app ./run.sh composer install
+docker-compose exec test-app ./run.sh composer install
 ```
 
 ### Lets build the modules we have at the moment
 ```sh
 #Note: This will delete all the tables linked to modules, recreate them and run migrations
-docker compose exec test-app ./run.sh build-modules
+docker-compose exec test-app ./run.sh build-modules
 ```
 
 #### FYI: The app runs at http://localhost:8000
@@ -37,25 +37,25 @@ docker compose exec test-app ./run.sh build-modules
 
 ### This is how you can seed tables
 ```sh
-docker compose exec test-app ./run.sh seed
+docker-compose exec test-app ./run.sh seed
 #Seeding specific tables or running specific seeder classes
-docker compose exec test-app ./run.sh seed --class=PolicySeeder
+docker-compose exec test-app ./run.sh seed --class=PolicySeeder
 ```
 
 ### This is how you can create seeders
 ```sh
-docker compose exec test-app ./run.sh create-seeder MySeeder
+docker-compose exec test-app ./run.sh create-seeder MySeeder
 ```
 
 ### Run migrations
 ```sh
 #Might want to give the db container a few minutes to properly start up before running this one
-docker compose exec test-app ./run.sh migrate
+docker-compose exec test-app ./run.sh migrate
 ```
 
 ### Run inspire to get an inspiration from laravel
 ```sh
-docker compose exec test-app ./run.sh inspire
+docker-compose exec test-app ./run.sh inspire
 ```
 
 ### This is how you can ssh into the container if needed
@@ -65,41 +65,41 @@ docker exec -it case-management-test-container /bin/bash
 
 ### This is how you can create a module called users
 ```sh
-docker compose exec test-app ./run.sh create-module users
+docker-compose exec test-app ./run.sh create-module users
 ```
 
 ### This is how you can remove a module called users
 ```sh
-docker compose exec test-app ./run.sh remove-module users
+docker-compose exec test-app ./run.sh remove-module users
 ```
 
 ### This is how you can create a unit test
 ```sh
-docker compose exec test-app ./run.sh create-unit-test MyAwesomeUnitTest
+docker-compose exec test-app ./run.sh create-unit-test MyAwesomeUnitTest
 ```
 
 ### This is how you can create a feature test
 ```sh
-docker compose exec test-app ./run.sh create-feature-test MyAwesomeFeatureTest
+docker-compose exec test-app ./run.sh create-feature-test MyAwesomeFeatureTest
 ```
 
 ### This is how you can run tests
 ```sh
-docker compose exec test-app ./run.sh test
+docker-compose exec test-app ./run.sh test
 ```
 
 ### This is how you can run specific tests
 ```sh
 #Run all tests in a class
-docker compose exec test-app ./run.sh test --filter=MyAwesomeUnitTest
+docker-compose exec test-app ./run.sh test --filter=MyAwesomeUnitTest
 
 #Run a specific test function
-docker compose exec test-app ./run.sh test --filter=MyAwesomeUnitTest::test_example
+docker-compose exec test-app ./run.sh test --filter=MyAwesomeUnitTest::test_example
 ```
 
 ### This is how you can create custom migrations
 ```sh
-docker compose exec test-app ./run.sh create-migration create_role_user_table
+docker-compose exec test-app ./run.sh create-migration create_role_user_table
 ```
 
 ### Defining fields on a module

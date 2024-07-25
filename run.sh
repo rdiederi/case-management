@@ -12,9 +12,6 @@ then
 elif [[ $ACTION == "inspire" ]]
 then
     php artisan inspire
-elif [[ $ACTION == "redo" ]]
-then
-    php artisan migrate:refresh
 elif [[ $ACTION == "create-module" ]]
 then
     php artisan sugarcrm-modules:make $ARG1

@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LtCustomer extends Migration
+class CreateLtCustomerTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -19,11 +20,13 @@ class LtCustomer extends Migration
             $table->string('last_name', 255);
             $table->string('id_number', 15);
             $table->string('phone', 15)->nullable();
-            $table->string('description', 255);
             $table->string('id_number_status', 9)->nullable();
+            $table->string('name', 255)->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
