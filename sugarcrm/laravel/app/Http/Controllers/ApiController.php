@@ -256,6 +256,7 @@ class ApiController extends Controller
 
             $customer = new \lt_customer();
             $customer->retrieve_by_string_fields(['id_number' => $validated['id_number']]);
+            Log::debug($customer);
             if ( empty($customer->id) ) {
                 throw new \Exception("Customer with id number `{$validated['id_number']}` not found!");
             }
@@ -311,7 +312,20 @@ class ApiController extends Controller
         } else {
             $validated = $validator->validated(); //The id number is here: $validated['id_number']
 
-            //Add code here
+            $case = new \lt_case();
+            $case->retrieve($id);
+            if ( empty($case->id) ) {
+                throw new \Exception("Case with id `{$id}` not found!");
+            }
+            $case->load_relationship("lt_customer");
+
+            $customer = new \lt_customer();
+            $customer->retrieve_by_string_fields(['id_number' => $validated['id_number']]);
+            if ( empty($customer->id) ) {
+                throw new \Exception("Customer with id number `{$validated['id_number']}` not found!");
+            }
+
+            $case->lt_customer->add($customer);
         }
 
         return $this->getCase($id);
@@ -329,7 +343,7 @@ class ApiController extends Controller
      */
     function getCustomers(Request $request) {
         $results = DB::select(<<<SQL
-            SELECT last_name, first_name, id_number, id_number_status
+            SELECT last_name, first_name, id_number
             FROM lt_customer
             ORDER BY last_name
 SQL);
