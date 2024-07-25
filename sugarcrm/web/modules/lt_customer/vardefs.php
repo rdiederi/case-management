@@ -8,6 +8,10 @@ $moduleVardefs['lt_customer'] = [
     'detail_view_class' => 'CustomerDetailView',
     'edit_view_class' => 'CustomerEditView',
     'related_modules' => [
+        'lt_policy' => [
+            'relationship_type' => 'one-to-many',
+            'relation_key_rhs' => 'customer_id',
+        ]
     ],
     /* Add all the fields for your module/table below */
     'fields' => [
