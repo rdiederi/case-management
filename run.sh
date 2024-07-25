@@ -27,6 +27,9 @@ elif [[ $ACTION == "build-modules" ]]
 then
     php artisan sugarcrm-modules:build
     php artisan migrate
+elif [[ $ACTION == "rebuild" ]]
+then
+    php artisan migrate:fresh
 elif [[ $ACTION == "create-unit-test" ]]
 then
     php artisan make:test -u $ARG1

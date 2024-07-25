@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2023-10-10 06:34:46
+/* Smarty version 4.3.4, created on 2024-07-25 10:43:34
   from '/var/www/sugarcrm/core/general/module/views/templates/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6524f086ce75f1_42548343',
+  'unifunc' => 'content_66a22c5691aa99_17329888',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89897e24c49e5fd8a349b2db551dee851362a4b8' => 
     array (
       0 => '/var/www/sugarcrm/core/general/module/views/templates/edit.tpl',
-      1 => 1696919668,
+      1 => 1697113900,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6524f086ce75f1_42548343 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66a22c5691aa99_17329888 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h3><?php echo $_smarty_tpl->tpl_vars['moduleLabel']->value;?>
 </h3>
 <br><br>
-<form method="post" action="/module/<?php echo $_smarty_tpl->tpl_vars['beanName']->value;?>
+<form method="put" action="/module/<?php echo $_smarty_tpl->tpl_vars['beanName']->value;?>
 /<?php echo $_smarty_tpl->tpl_vars['beanArray']->value['id'];?>
 ">
     <input type="hidden" name="_token" value="<?php echo $_smarty_tpl->tpl_vars['csrf_token']->value;?>
