@@ -7,7 +7,8 @@ $moduleVardefs['lt_customer'] = [
     'label' => 'Customer',
     'detail_view_class' => 'CustomerDetailView',
     'edit_view_class' => 'CustomerEditView',
-    'related_modules' => [],
+    'related_modules' => [
+    ],
     /* Add all the fields for your module/table below */
     'fields' => [
         /*Any definitions added to the `id` field will be ignored, leave it as an empty array*/

@@ -50,24 +50,24 @@
         <script src="/js/angular.min.js"></script>
         <script src="/js/sidebarApp.js"></script>
         <script>
-            var app = angular.module('modulesList', []);
+            // var app = angular.module('modulesList', []);
 
-            app.controller('ModuleController', function($scope) {
-                $scope.shownCase = false;
+            // app.controller('ModuleController', function($scope) {
+            //     $scope.shownCase = false;
 
-                $scope.findAndShowCase = function() {
-                    $scope.shownCase = !$scope.shownCase;
+            //     $scope.findAndShowCase = function() {
+            //         $scope.shownCase = !$scope.shownCase;
 
-                    axios.get('http://localhost:8000/api/module/lt_case/get/' + $scope.caseNumber)
-                        .then(function (response) {
-                            $scope.shownCase = response.data;
-                            $scope.$apply();
-                        })
-                        .catch(function (error) {
-                            console.error('Error fetching data:', error);
-                        });
-                };
-            });
+            //         axios.get('http://localhost:8000/api/module/lt_case/get/' + $scope.caseNumber)
+            //             .then(function (response) {
+            //                 $scope.shownCase = response.data;
+            //                 $scope.$apply();
+            //             })
+            //             .catch(function (error) {
+            //                 console.error('Error fetching data:', error);
+            //             });
+            //     };
+            // });
         </script>
     </body>
 </html>
