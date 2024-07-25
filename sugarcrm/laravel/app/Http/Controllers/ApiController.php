@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
  */
 
 class ApiController extends Controller
-{   
+{
     /**
      * @OA\Post(
      *     path="/api/module/lt_case/create",
@@ -172,7 +172,7 @@ class ApiController extends Controller
             }
 
             $customer->save();
-            
+
             return response()->json($customer);
         }
     }
@@ -253,7 +253,7 @@ class ApiController extends Controller
                 throw new \Exception("Case with id `{$id}` not found!");
             }
             $case->load_relationship("lt_customer");
-            
+
             $customer = new \lt_customer();
             $customer->retrieve_by_string_fields(['id_number' => $validated['id_number']]);
             if ( empty($customer->id) ) {
@@ -310,7 +310,7 @@ class ApiController extends Controller
             throw new \Exception("Validation failed: " . implode("\n", $errorMessages));
         } else {
             $validated = $validator->validated(); //The id number is here: $validated['id_number']
-            
+
             //Add code here
         }
 
@@ -364,8 +364,15 @@ SQL);
      */
     function updateHasCorrectIdNumber(Request $request) {
 
-        //Add code here
-        
+        DB::update("
+            UPDATE lt_customer
+            SET id_number_status = CASE
+                WHEN id_number LIKE '% %' THEN 'uncertain'
+                WHEN LENGTH(id_number) = 13 THEN 'correct'
+                ELSE 'incorrect'
+            END
+        ");
+
         return $this->getCustomers($request);
     }
 }
