@@ -9,6 +9,12 @@ cd sugarcrm/laravel
 if [[ $ACTION == "migrate" ]]
 then
     php artisan migrate
+elif [[ $ACTION == "rebuild" ]]
+then
+    php artisan migrate:fresh
+elif [[ $ACTION == "create-controller" ]]
+then
+    php artisan make:controller $ARG1
 elif [[ $ACTION == "inspire" ]]
 then
     php artisan inspire
@@ -27,9 +33,6 @@ elif [[ $ACTION == "build-modules" ]]
 then
     php artisan sugarcrm-modules:build
     php artisan migrate
-elif [[ $ACTION == "rebuild" ]]
-then
-    php artisan migrate:fresh
 elif [[ $ACTION == "create-unit-test" ]]
 then
     php artisan make:test -u $ARG1

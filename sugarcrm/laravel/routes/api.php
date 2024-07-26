@@ -15,4 +15,25 @@ use App\Http\Controllers\ApiController;
 |
 */
 
+Route::prefix('module')->controller(ApiController::class)->group(function () {
+    Route::get("/lt_case/create", 'createCase');
+    Route::get("/lt_case/get/{case}", 'getCase');
+    Route::get("/lt_customer/get/{id}", 'getCustomer');
+
+    Route::post("/lt_customer/create", 'createCustomer');
+
+    Route::put("/lt_case/{id}/remove-customer", 'removeCustomerFromCase');
+    Route::put("/lt_case/{id}/add-customer", 'addCustomerToCase');
+});
+
+Route::prefix('lists')->controller(ApiController::class)->group(function () {
+    Route::get("/customers", 'getCustomers');
+    Route::get("/customers/with-policy-names", 'getCustomersWithPolicyNames');
+
+    Route::put("/customers/update-id-number-status", 'updateHasCorrectIdNumber');
+});
+
+
+
+
 
