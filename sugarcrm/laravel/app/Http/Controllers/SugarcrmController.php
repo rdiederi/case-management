@@ -76,6 +76,8 @@ class SugarcrmController extends Controller
         }
         $data = $request->all();
         unset($data['_token']);
+        unset($data['_method']);
+
         $validator = Validator::make($data, $fieldsToValidate);
 
         if ( $validator->fails() ) {

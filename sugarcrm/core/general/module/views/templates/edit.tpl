@@ -1,6 +1,7 @@
 <h3>{$moduleLabel}</h3>
 <br><br>
-<form method="put" action="/module/{$beanName}/{$beanArray['id']}">
+<form method="POST" action="/module/{$beanName}/{$beanArray['id']}">
+    {method_field('PUT')}
     <input type="hidden" name="_token" value="{$csrf_token}" />
     <table class="table table-module-detail table-striped-columns">
         {foreach $viewFieldDefs as $rowDefs}
