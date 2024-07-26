@@ -17,7 +17,11 @@ class DatabaseSeeder extends Seeder
             CaseSeeder::class,
             CustomerSeeder::class,
             PolicySeeder::class,
-            CustomersCasesSeeder::class
+            CustomersCasesSeeder::class,
+            CourseSeeder::class,
+            TeacherSeeder::class,
+            StudentSeeder::class,
+            CourseStudentSeeder::class,
         ]);
     }
 }

@@ -15,6 +15,9 @@ then
 elif [[ $ACTION == "create-controller" ]]
 then
     php artisan make:controller $ARG1
+elif [[ $ACTION == "create-model" ]]
+then
+    php artisan make:model $ARG1
 elif [[ $ACTION == "inspire" ]]
 then
     php artisan inspire

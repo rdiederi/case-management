@@ -19,6 +19,7 @@ Route::prefix('module')->controller(ApiController::class)->group(function () {
     Route::get("/lt_case/create", 'createCase');
     Route::get("/lt_case/get/{case}", 'getCase');
     Route::get("/lt_customer/get/{id}", 'getCustomer');
+    Route::get("/lt_courses", 'getCourses');
 
     Route::post("/lt_customer/create", 'createCustomer');
 
@@ -32,8 +33,4 @@ Route::prefix('lists')->controller(ApiController::class)->group(function () {
 
     Route::put("/customers/update-id-number-status", 'updateHasCorrectIdNumber');
 });
-
-
-
-
 

@@ -256,7 +256,6 @@ class ApiController extends Controller
 
             $customer = new \lt_customer();
             $customer->retrieve_by_string_fields(['id_number' => $validated['id_number']]);
-            Log::debug($customer);
             if ( empty($customer->id) ) {
                 throw new \Exception("Customer with id number `{$validated['id_number']}` not found!");
             }
@@ -401,5 +400,47 @@ SQL);
         ");
 
         return $this->getCustomers($request);
+    }
+
+        /**
+     * @OA\Put(
+     *     path="/api/lists/customers/update-id-number-status",
+     *     summary="Updates the status of an id number based on the id number that's currently stored for each customer",
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK"
+     *     )
+     * )
+     */
+    function getCourses(Request $request) {
+
+        $results = DB::select("
+                        SELECT
+                            c.id AS course_id,
+                            c.name AS course_name,
+                            c.description AS course_description,
+                            JSON_OBJECT(
+                                'teacher_id', t.id,
+                                'teacher_name', t.name
+                            ) AS teacher,
+                            JSON_ARRAYAGG(
+                                JSON_OBJECT(
+                                    'student_id', s.id,
+                                    'student_name', s.name
+                                )
+                            ) AS students
+                        FROM
+                            lt_course c
+                        JOIN
+                            lt_teacher t ON c.teacher_id = t.id
+                        LEFT JOIN
+                            course_student cs ON c.id = cs.course_id
+                        LEFT JOIN
+                            lt_student s ON cs.student_id = s.id
+                        GROUP BY
+                            c.id, t.id, c.name, c.description
+        ");
+
+        return response()->json($results);
     }
 }
